@@ -16,7 +16,7 @@ body
 
 .sidebar
 {
-    border-radius: 1rem;    /* 16px */
+    border-radius: 1rem;   
     width: 17.5rem;
         background-color: black;
         margin-right: 0.5rem;
@@ -25,10 +25,8 @@ body
 .main-content
 {
     background-color: blue;
-    /* flex: 1; */
-    /* remaining space is mine */
     width: 65.85rem;
-    border-radius: 1rem;    /* 16px */
+    border-radius: 1rem;   
     overflow: auto;/* to control scrollbar  only when needed */
 }
 .music-player
@@ -181,9 +179,28 @@ div.icons i:hover
 {
     /* overflow: auto; */
     margin-top: 1rem;
-    /* ::-webkit-scrollbar-corner */
     scrollbar-color: red;
     scrollbar-width: thin;
+}
+
+.container {
+    height: calc(100vh - 300px); /* Adjust as needed */
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #535353 #121212;
+}
+
+.container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.container::-webkit-scrollbar-track {
+    background: #121212;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background-color: #535353;
+    border-radius: 4px;
 }
 
 .boxes
@@ -386,7 +403,6 @@ height: 2rem;
 .card1:hover
 {
    background: #503b63;
-    /* background: linear-gradient( to right, #615497, #715fbb, #2f2a46 ); */
 }
 
 /* ***************************************** */
@@ -421,15 +437,6 @@ height: 2rem;
     text-decoration: underline;
 }
 
-
-
-/* .episode h1
-{
-    margin-left: 1rem;
-    margin: 1rem 1rem 1rem 1rem;
-    font-family: 'Red Hat Display', sans-serif;
-    font-size: large;
-} */
 
 .big-cards
 {
@@ -567,6 +574,7 @@ height: 2rem;
   font-size:large;
 }
 
+
 .player
 {
     width: 33.75rem;
@@ -575,12 +583,15 @@ height: 2rem;
     align-items: center;
 
 }
+
 .player-controls
 {
     display: flex;
     align-items: center;
     height: 2rem;
 }
+
+
 #play
 {
     width: 2rem;
@@ -609,6 +620,8 @@ height: 2rem;
     margin-top: 0.3rem;
     
 }
+
+
 .progress span
 {
     font-size: x-small;
@@ -660,7 +673,7 @@ height: 2rem;
 }
 
 
-/********************************************************************************************************************************/
+/********************************************************************/
 @media (max-width: 600px) 
 {
     .main-content
@@ -680,3 +693,130 @@ height: 2rem;
 
 
 
+
+
+
+
+
+
+/* ================= RESPONSIVE MODIFICATIONS ================= */
+/* Mobile First Approach */
+@media (max-width: 768px) {
+    /* Main layout adjustments */
+    .main {
+      flex-direction: column;
+      height: auto;
+      overflow: visible;
+    }
+    
+    /* Sidebar becomes horizontal menu */
+    .sidebar {
+      width: 100%;
+      margin-right: 0;
+      border-radius: 0;
+      position: relative;
+    }
+    
+    .nav {
+      flex-direction: row;
+      justify-content: space-around;
+      height: auto;
+      width: 100%;
+    }
+    
+    /* Main content area */
+    .main-content {
+      width: 100%;
+      height: auto;
+    }
+    
+    /* Library section - hidden by default on mobile */
+    .library {
+      display: none;
+    }
+    
+    /* Mobile menu toggle button */
+    .mobile-menu-toggle {
+      display: block;
+      text-align: center;
+      padding: 1rem;
+      background: #121212;
+      cursor: pointer;
+    }
+    
+    /* Card layout adjustments */
+    .cards {
+      flex-direction: column;
+    }
+    
+    .card1 {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .big-cards, .big-cards2 {
+      justify-content: center;
+    }
+    
+    .big-card1 {
+      width: 45%;
+      margin: 0.5rem;
+    }
+    
+    /* Music player adjustments */
+    .music-player {
+      flex-direction: column;
+      height: auto;
+      padding: 1rem;
+    }
+    
+    .album, .player, .controls {
+      width: 100%;
+      justify-content: center;
+      margin: 0.5rem 0;
+    }
+    
+    .progress-bar {
+      width: 100%;
+    }
+  }
+  
+  /* Tablet View (768px - 1024px) */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .sidebar {
+      width: 30%;
+    }
+    
+    .main-content {
+      width: 70%;
+    }
+    
+    .card1 {
+      width: 45%;
+    }
+    
+    .big-card1 {
+      width: 30%;
+    }
+  }
+  
+  /* Small mobile devices (below 480px) */
+  @media (max-width: 480px) {
+    .big-card1 {
+      width: 100%;
+    }
+    
+    .profile button, .install button {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.8rem;
+    }
+    
+    .player-controls img {
+      margin-right: 0.8rem;
+    }
+  }
+  
+  /* Show library when active class is present */
+  .library.active {
+    display: block;
+  }

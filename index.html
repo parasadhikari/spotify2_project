@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+<!-- Added for mobile responsiveness -->
+<style>
+    .mobile-menu-toggle {
+      display: none;
+    }
+  </style>
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--for responsive -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
@@ -84,7 +92,7 @@
                     </div>
 
                     <div class="boxes">
-                        <img src="k-pop.jpg" alt="likes">
+                        <img src="kishore.jpg" alt="likes">
                         <div class="boxes-info">
                         <span>Liked song</span>
                             <div class="icon">
@@ -107,7 +115,7 @@
 
 
                     <div class="boxes">
-                        <img src="arijit.jpg" alt="likes">
+                        <img src="alka.jpg" alt="likes">
                         <div class="boxes-info">
                         <span>Liked song</span>
                             <div class="icon">
@@ -119,7 +127,7 @@
 
 
                     <div class="boxes">
-                        <img src="arijit.jpg" alt="likes">
+                        <img src="udit.jpg" alt="likes">
                         <div class="boxes-info">
                         <span>Liked song</span>
                             <div class="icon">
@@ -131,7 +139,7 @@
 
 
                     <div class="boxes">
-                        <img src="arijit.jpg" alt="likes">
+                        <img src="lata.jpg" alt="likes">
                         <div class="boxes-info">
                         <span>Liked song</span>
                             <div class="icon">
@@ -143,7 +151,7 @@
 
 
                     <div class="boxes">
-                        <img src="arijit.jpg" alt="likes">
+                        <img src="dipti.jpg" alt="likes">
                         <div class="boxes-info">
                         <span>Liked song</span>
                             <div class="icon">
@@ -155,7 +163,7 @@
 
 
                     <div class="boxes">
-                        <img src="arijit.jpg" alt="likes">
+                        <img src="justin.jpg" alt="likes">
                         <div class="boxes-info">
                         <span>Liked song</span>
                             <div class="icon">
@@ -167,7 +175,7 @@
 
 
                     <div class="boxes">
-                        <img src="arijit.jpg" alt="likes">
+                        <img src="kelly.jpg" alt="likes">
                         <div class="boxes-info">
                         <span>Liked song</span>
                             <div class="icon">
@@ -594,44 +602,47 @@
                 </div>
             </div>
         </div>
+       
+
         <div class="music-player">
             <div class="album">
-                <img src="kk.jpg" alt="image">
-                 <div class="music">
-                    <span>Teri Yadoon Main</span>
-                    <a href="#">KK , Shreya Ghoshla</a>
-                 </div>
-                <i class="fa-regular fa-heart"></i>
+              <img id="cover" src="covers/kk.jpg" alt="album cover">
+              <div class="music">
+                <span id="song-title">Teri Yadoon Main</span>
+                <a id="song-artist">kk</a>
+              </div>
+              <i class="fa-regular fa-heart"></i>
             </div>
-
+          
             <div class="player">
-                <div class="player-controls">
-                    <img src="player_icon1.png" alt="">
-                    <img src="player_icon2.png" alt="">
-                    <img src="player_icon3.png" alt="" id="play">
-                    <img src="player_icon4.png" alt="">
-                    <img src="player_icon5.png" alt="">
-                </div>
-                <div class="progress">
-                    <span>01:22</span>
-                    <input type="range" min="0" max="100" step="1" class="progress-bar">
-                    <span>03:46</span>
-                </div>
-
+              <div class="player-controls">
+                <img src="player_icon1.png" alt="shuffle">
+                <img src="player_icon2.png" alt="previous" id="prev">
+                <img src="player_icon3.png" alt="play/pause" id="play">
+                <img src="player_icon4.png" alt="next" id="next">
+                <img src="player_icon5.png" alt="repeat">
+              </div>
+              <div class="progress">
+                <span id="current-time">00:00</span>
+                <input type="range" min="0" max="100" value="0" class="progress-bar" id="progress">
+                <span id="duration">00:00</span>
+              </div>
             </div>
+            
             <div class="controls">
-                <i class="fa-solid fa-circle-play"></i>
-                <i class="fa-solid fa-microphone"></i>
-                <i class="fa-solid fa-computer"></i>
-                <i class="fa-solid fa-volume-high"></i>
-                <i class="fa-solid fa-window-minimize "></i>
-                <i class="fa-solid fa-square"></i>
+              <i class="fa-solid fa-circle-play"></i>
+              <i class="fa-solid fa-microphone"></i>
+              <i class="fa-solid fa-computer"></i>
+              <input type="range" min="0" max="100" value="80" id="volume">
+              <i class="fa-solid fa-window-minimize"></i>
+              <i class="fa-solid fa-square"></i>
             </div>
-        </div>
+            
+            <audio id="audio"></audio>
+          </div>
+
     </div>
     <script src="app.js"></script>
 </body>
 
 </html>
-
-
