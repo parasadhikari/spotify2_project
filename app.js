@@ -162,22 +162,64 @@ const songs = [
 
 
 
-  // Mobile menu toggle functionality
+//   // Mobile menu toggle functionality
+// const mobileMenuToggle = document.createElement('div');
+// mobileMenuToggle.className = 'mobile-menu-toggle';
+// mobileMenuToggle.innerHTML = '<i class="fas fa-bars"></i> Menu';
+// document.querySelector('.sidebar').prepend(mobileMenuToggle);
+
+// mobileMenuToggle.addEventListener('click', function() {
+//   document.querySelector('.library').classList.toggle('active');
+// });
+
+// // Better card click handling for mobile
+// document.querySelectorAll('.big-card1, .boxes').forEach((card, index) => {
+//   card.addEventListener('click', function(e) {
+//     // Don't trigger on mobile if clicking a link
+//     if (window.innerWidth <= 768 && (e.target.tagName === 'A' || e.target.tagName === 'I')) {
+//       return;
+//     }
+    
+//     songIndex = index % songs.length;
+//     loadSong(songs[songIndex]);
+//     playSong();
+//   });
+// });
+
+// Enhanced Mobile Menu Toggle
 const mobileMenuToggle = document.createElement('div');
 mobileMenuToggle.className = 'mobile-menu-toggle';
 mobileMenuToggle.innerHTML = '<i class="fas fa-bars"></i> Menu';
 document.querySelector('.sidebar').prepend(mobileMenuToggle);
 
-mobileMenuToggle.addEventListener('click', function() {
+// Close menu when clicking outside on mobile
+document.addEventListener('click', function(e) {
+  if (window.innerWidth <= 768) {
+    const library = document.querySelector('.library');
+    const isClickInside = library.contains(e.target) || mobileMenuToggle.contains(e.target);
+    
+    if (!isClickInside && library.classList.contains('active')) {
+      library.classList.remove('active');
+    }
+  }
+});
+
+mobileMenuToggle.addEventListener('click', function(e) {
+  e.stopPropagation();
   document.querySelector('.library').classList.toggle('active');
 });
 
-// Better card click handling for mobile
+// Better touch handling for song cards
 document.querySelectorAll('.big-card1, .boxes').forEach((card, index) => {
   card.addEventListener('click', function(e) {
-    // Don't trigger on mobile if clicking a link
-    if (window.innerWidth <= 768 && (e.target.tagName === 'A' || e.target.tagName === 'I')) {
+    // Don't trigger if clicking a link or button
+    if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.tagName === 'I') {
       return;
+    }
+    
+    // For mobile, close menu if open
+    if (window.innerWidth <= 768 && document.querySelector('.library').classList.contains('active')) {
+      document.querySelector('.library').classList.remove('active');
     }
     
     songIndex = index % songs.length;
